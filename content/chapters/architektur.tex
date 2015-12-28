@@ -1,0 +1,212 @@
+\section{Architekturmuster}\label{architekturmuster}
+
+\section{Unterschied Architektur- zu
+Entwurfsmuster}\label{unterschied-architektur--zu-entwurfsmuster}
+
+Architekturmuster beziehen sich auf das Gesamtsystem (grundlegendes
+Problem), während sich Entwurfsmuster auf die Teilgebiete und die
+Umsetzung beziehen (lokales Problem)
+
+Beispiel: Einkommensgenerierung. Architektur: Gründung Escort-Service.
+Entwurf: Standort, Personal, Verwaltung.
+
+\section{Layer}\label{layer}
+
+Software ist in logischen Schichten organisiert. Problem:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Unterteilung komplexer Systeme (Abhängigkeitsminimierung)
+\item
+  Horizontale Strukturierung (Obere Schicht = Client, Untere Schicht =
+  Server)
+\item
+  Jede Schicht repräsentiert eine Abstraktion
+\end{itemize}
+
+Lösung:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Jede Schicht verfolgt einen bestimmten Zweck
+\item
+  Client-Server Modell
+\end{itemize}
+
+\paragraph{strict layering / closed
+architecture}\label{strict-layering-closed-architecture}
+
+Schichten dürfen nicht übersprungen werden und dürfen nur die direkt
+darunter liegende Schicht aufrufen.
+
+Vorteil: leichter test- und wartbar.
+
+\paragraph{loose layering / open
+architecture}\label{loose-layering-open-architecture}
+
+Schichten dürfen übersprungen werden, höchste Schicht kann direkt mit
+tiefster Schicht kommunizieren.
+
+Vorteil: höhere Performanz.
+
+\section{Pipes and Filters}\label{pipes-and-filters}
+
+Filter modifizieren Daten, Pipes transportieren Daten. Problem:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Unterteilung Datenstrom in Einzelschritte
+\item
+  Einfach erweiterbar
+\item
+  Parallelverarbeitung gut möglich
+\end{itemize}
+
+Lösung:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Zerlegung in Einzelschritte
+\item
+  Jeder Verarbeitungsschritt ist ein Filter
+\item
+  Jeder Transportweg ist eine Pipe
+\item
+  Filter lesen, verarbeiten und geben Daten aus
+\item
+  Pipes transportieren und puffern Daten
+\item
+  Pipes entkoppeln Entitäten
+\item
+  Asynchrone Schreib- und Lesevorgänge möglich
+\end{itemize}
+
+\paragraph{Aktiver Filter}\label{aktiver-filter}
+
+Eigenständig laufende Prozesse oder Threads, werden nach Instanziierung
+von übergeordnetem Programmteil aufgerufen. Laufen kontinuierlich.
+
+\paragraph{Passiver Filter}\label{passiver-filter}
+
+Aufruf durch benachbartes Filterelement.
+
+\paragraph{Push}\label{push}
+
+Vorgänger hat Ausgabedaten erzeugt und ruft zu aktivierenden Filter auf.
+(Daten werden zur Verfügung gestellt)
+
+\paragraph{Pull}\label{pull}
+
+Nachfolger fordert Daten an. (Daten werden benötigt)
+
+\section{Plug-In}\label{plug-in}
+
+Interface beschreibt Funktion, Plug-Ins sind die konkreten Umsetzungen
+dieser Interfaces. Der Plugin-Manager sorgt für die korrekte Zuordnung
+der konkreten Umsetzung zum Interface bei Aufruf.
+
+Problem:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Erweiterbarkeit ohne Modifikation
+\item
+  Neue Funktionalität durch Dritte
+\item
+  Core-System funktioniert ohne Zusätze, bietet mit ihnen aber mehr
+  Funktionalität
+\end{itemize}
+
+Lösung:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Interfaces für Erweiterungen
+\item
+  Plug-Ins implementieren diese
+\item
+  Plug-Ins ersetzen zur Laufzeit die Interfaces durch konkrete
+  Implementierungen.
+\end{itemize}
+
+Beispiel: Interface: Escort-Dame, Konkrete Umsetzungen: Cindy, Mandy,
+Scarlett, Plugin-Manager: Telefonistin der Agentur.
+
+\section{Broker}\label{broker}
+
+Broker ist verantwortlich für die Koordination von Kommunikation
+(Weitergabe von Anfragen und Antworten)
+
+Problem:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Skalierbarkeit
+\item
+  Verteilbarkeit
+\item
+  Lose Kopplung
+\item
+  Gegenseitige Abhängigkeit nicht sinnvoll
+\end{itemize}
+
+Lösung:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Komponenten klassifiziert durch deren Rolle
+\item
+  Serverkomponenten bieten n\textgreater{}=1 Services
+\item
+  Clients nutzen m\textgreater{}=1 Services
+\item
+  Rollen können sich ändern
+\item
+  Broker bietet Vermittlungs- und Zwischenschicht
+\end{itemize}
+
+\paragraph{marshalling}\label{marshalling}
+
+Serialisierung von Methodenaufrufen für Netzwerktransmission
+
+\paragraph{unmarshalling}\label{unmarshalling}
+
+Rückkonvertierung in Standard-Methodenaufrufe auf Empfängerseite
+
+Beispiel: Pornokino mit Gloryhole. Die Wand mit dem Loch ist der Broker,
+die Kundschaft sind die Clients, die Dienstleisterinnen sind die für den
+Client unzugänglichen Systeme und unterscheiden und/oder ergänzen sich
+im Funktionsumfang.
+
+\section{Service-Oriented Architecture
+(SOA)}\label{service-oriented-architecture-soa}
+
+\section{Model-View-Controller
+(MVC)}\label{model-view-controller-mvc}
+
+Problem: Mehrere Benutzeroberflächen, die sich schnell ändern können.
+Dargestellte Informationen müssen stets aktuell sein.
+
+Lösung: Aufgabenverteilung auf 3 Komponenten, Model verwaltet und verarbeitet
+Daten, View stellt Daten dar, Controller verarbeitet Benutzereingaben
+
+\paragraph{Push}\label{push-1}
+
+Model sendet aktiv Daten an die View, welche dann die Darstellung
+aktualisiert.
+
+\paragraph{Pull}\label{pull-1}
+
+View wird durch Model informiert, dass neue Daten vorhanden sind. Wird
+die View \emph{immer} informiert ist es aktiver Pull, sonst passiver.
+Der Controller wertet Benutzereingaben aus und aktualisiert ggf. das
+Model oder die View. Die View zieht sich die neuen Daten nach
+Information durch das Model.
