@@ -1,4 +1,4 @@
-\section{Architekturmuster}\label{architekturmuster}
+\chapter{Architekturmuster}\label{architekturmuster}
 
 \section{Unterschied Architektur- zu
 Entwurfsmuster}\label{unterschied-architektur--zu-entwurfsmuster}
@@ -188,6 +188,14 @@ im Funktionsumfang.
 
 \section{Service-Oriented Architecture
 (SOA)}\label{service-oriented-architecture-soa}
+Bei einer SOA stellt eine Anwendung Services für andere Anwendungen über eine
+Schnittstelle, typischerweise über ein Netzwerk, bereit.\\
+Beispiel: Kunde bestellt bei einem Versandhändler.\\
+Erfassung $–$ Verfügbarkeitsprüfung $–$ Bonitätsprüfung $–$ Bestellung $–$\\
+Kommissionierung $–$ Versand $–$ Rechnungsstellung $–$ Zahlungseingang
+
+Für jeden Geschäftsprozess gibt es einen Dienst, diese sind völlig unabhängig
+voneinander und kommunizieren nur durch das Resultat des Vorgängers mit diesem.
 
 \section{Model-View-Controller
 (MVC)}\label{model-view-controller-mvc}
