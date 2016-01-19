@@ -197,6 +197,29 @@ Kommissionierung $–$ Versand $–$ Rechnungsstellung $–$ Zahlungseingang
 Für jeden Geschäftsprozess gibt es einen Dienst, diese sind völlig unabhängig
 voneinander und kommunizieren nur durch das Resultat des Vorgängers mit diesem.
 
+\paragraph{Anforderungen an Services}
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Verteilung - Ein Dienst steht in einem Netzwerk zur Verfügung
+\item
+  Geschlossenheit - Jeder Dienst stellt abgeschlossene Einheit dar, die unabhängig aufgerufen werden kann.
+\item
+  Zustandslos - Service startet bei jedem Aufruf im gleichen Zustand (keine Informationen eines früheren Aufrufs weitergeben)
+\item
+  Lose Kopplung - Services sind untereinander entkoppelt. Ein beliebiger Service kann bei Bedarf dynamisch zur Laufzeit vom Servicenutzer gesucht und aufgerufen werden.
+\item
+  Austauschbarkeit - standardisierte Schnittstelle
+\item
+  Ortstransparenz - für Nutzer unwichtig auf welchem Rechner Service läuft
+\item
+  Plattformunabhängigkeit
+\item
+  Zugriff auf einen Dienst über Schnittstellen - Schnittstellenkentniss reicht zur Nutzung. Implementierung verborgen
+\item
+  Ein Dienst ist in einem Verzeichnis registriert  
+\end{itemize}
+
 \section{Model-View-Controller
 (MVC)}\label{model-view-controller-mvc}
 
