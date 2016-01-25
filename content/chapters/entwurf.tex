@@ -18,6 +18,8 @@ die überschrieben werden müssen.
 Reine Schnittstellenbeschreibung.
 
 \section{Erzeugungsmuster}\label{erzeugungsmuster}
+Dienen der Erzeugung von Objekten. Sie entkoppeln die Konstruktion eines
+Objekts von seiner Repräsentation.
 
 \paragraph{Abstract Factory / Abstrakte Fabrik}\label{abstract-factory}
 
@@ -45,6 +47,8 @@ Stellt sicher, dass von einem Objekt nur eine Instanz existiert, ist in der
 Regel global verfügbar.
 
 \section{Strukturmuster}\label{strukturmuster}
+Erleichtern den Entwurf von Software durch vorgefertigte Schablonen für
+Beziehungen zwischen Klassen.
 
 \paragraph{Adapter}\label{adapter}
 
@@ -61,11 +65,20 @@ unabhängig voneinander verändert werden.
 Repräsentiert Teil-Ganzes-Hierarchien, indem Objekte zu Baumstrukturen
 zusammengefasst werden. Fasst in abstrakter Klasse sowohl primitive Objekte als
 auch deren Behälter zusammen.
+Abgesehen von der Multiplizität bei der Aggregation identisch zum Dekorierer.
+
+Die abstrakte Klasse Knoten legt die Schnittstelle und das Verhalten der
+abgeleiteten Klassen Kompositum und Blatt fest. Es wird ein Defaultverhalten für
+die Kindoperationen implementiert. Die Klasse Blatt repräsentiert ein
+Abschlusselement in der Baumstruktur, das keine weiteren Knoten aggregiert und
+selbst immer nur Kind-Knoten sein kann. Die Klasse Kompositum repräsentiert ein
+Knotenelement in der Baumstruktur, welches weitere Knoten aggregieren kann.
 
 \paragraph{Decorator}\label{decorator}
 
 Flexible Alternative zur Unterklassenbildung um eine Klasse nachträglich um
 zusätzliche Funktionalitäten zu ergänzen.
+Abgesehen von der Multiplizität bei der Aggregation identisch zum Kompositum.
 
 \paragraph{Facade}\label{facade}
 
@@ -78,6 +91,8 @@ Schnittstellen eines Subsystems.
 Stellvertreterobjekt.
 
 \section{Verhaltensmuster}\label{verhaltensmuster}
+Modellieren komplexes Verhalten der Software und erhöhen damit die Flexibilität
+der Software hinsichtlich ihres Verhaltens.
 
 \paragraph{Command}\label{command}
 
@@ -112,15 +127,24 @@ Definiert eine Familie von Algorithmen, kapselt diese und macht sie
 untereinander austauschbar. Lässt den Algorithmus unabhängig von den nutzenden
 Clients variieren.
 
-
-%\paragraph{Role}\label{role}
-%
-%\begin{figure}[h]
-%	\includegraphics[width=0.3\textwidth]{images/role}
-%\end{figure}
+Das Strategie-Muster soll es erlauben, dass ein ganzer Algorithmus ausgetauscht
+wird, um die Wiederverwendbarkeit zu steigern. Dazu soll eine Gruppe von
+verschiedenen Algorithmen mit gleicher Schnittstelle definiert werden können und
+jeder einzelne separat gekapselt werden, um ihn als Kapsel austauschbar zu
+machen. Der jeweils zu einer bestimmten Zeit passende Algorithmus ist
+auszuwählen.
 
 \paragraph{Visitor}\label{visitor}
 
 Repräsentiert eine Operation, die auf Elemente einer Objektstruktur ausgeführt
 wird. Ermöglicht die Definition einer neuen Operation ohne die Klassen der
 Elemente zu ändern, auf die es ausgeführt wird.
+
+Beim Beobachter-Muster werden Nachrichten in beide Richtungen zwischen
+BeobachterObjekt und dem beobachteten Objekt ausgetauscht. Das beobachtbare
+Objekt verpflichtet den Aufrufer, eine spezielle Schnittstelle
+(Callback-Schnittstelle) zu implementieren, die vom beobachtbaren Objekt
+vorgegeben wird. Ändert sich der Beobachter, so hat dies keinen Einfluss auf das
+beobachtbare Objekt. Dagegen wirken sich Änderungen an der
+Callback-Schnittstelle oder den angebotenen Daten des beobachtbaren Objekts auf
+den Beobachter aus.

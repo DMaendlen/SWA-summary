@@ -56,6 +56,7 @@ Beispiel: Person ruft Escort-Service an und fragt gezielt nach
 Erzeugung von Objekten und Zuordnungen von Abhängigkeiten werden an eine
 dritte Partei delegiert, damit sind die Objekte voneinander nicht
 abhängig. Abhängigkeiten werden von außen injiziert. (Passiv)
+Arten: setter-, constructor-, interface injection.
 
 Beispiel: Der Escort-Service weiß, was seine Kunden brauchen und teilt
 diesen ohne Nachfragen oder Auftrag eine Escort-Dame zu.
@@ -80,3 +81,10 @@ Datenbanken: Schlecht, da sie Schnittstellen vergrößern.
 	\raggedright
 	\includegraphics[width=0.3\textwidth]{images/loose_coupling}
 \end{figure}
+
+\section{Entwurfsprinzipien}
+\paragraph{Separation of Concerns}
+SoC bedeutet, dass Teile eines Gesamtsystems jeweils genau eine Tätigkeit
+ausführen sollten.
+Beispiel: Jeweils eine Dienstleistung pro Escort-Dame. (Sandy macht Blowjobs,
+Patty Handjobs).
