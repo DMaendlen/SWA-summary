@@ -29,7 +29,7 @@ Ziel: Vermeidung von Überraschungen beim Anwender.
 
 Clients sollten nicht dazu gezwungen werden, von Interfaces abzuhängen,
 die sie nicht verwenden. Clients agieren nur mit Interfaces, die das und
-\emph{nur} das implementieren, was die Clients benötigen.
+\textbf{nur} das implementieren, was die Clients benötigen.
 
 Ziel: Aufteilung großer Interfaces und Reduktion unnötiger
 Abhängigkeiten.
@@ -71,16 +71,10 @@ die eng miteinander verwandt sind.
 Beispiel: High Cohesion: Escort-Dame. Low Cohesion: Partnerin.
 
 \paragraph{Loose coupling}\label{loose-coupling}
-
 Komponenten einer Software kommunizieren nur über wenige Schnittstellen
 mit anderen Komponenten, dadurch ist die Abhängigkeit sehr gering.
 Globale Variablen, öffentliche Attribute, Singletons, Zustände in
 Datenbanken: Schlecht, da sie Schnittstellen vergrößern.
-
-\begin{figure} [h]
-	\raggedright
-	\includegraphics[width=0.3\textwidth]{images/loose_coupling}
-\end{figure}
 
 \section{Entwurfsprinzipien}
 \paragraph{Separation of Concerns}
