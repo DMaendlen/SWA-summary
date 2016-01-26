@@ -1,0 +1,137 @@
+\chapter{Beispielcode} 
+ 
+ 
+\begin{minipage}[t]{0.45\linewidth}
+
+	 \begin{lstlisting}[caption={Abstrakte Java Klasse}\label{lst:java-abstract-class},captionpos=none,language=JAVA]] 
+	
+public interface Geometrisch {
+
+    public abstract double berechneFlaeche();
+	
+}
+
+
+
+	\end{lstlisting}
+	
+	 \begin{lstlisting}[caption={Abstrakte Java Klasse}\label{lst:java-abstract-class},captionpos=none,language=JAVA]] 
+
+public class Rechteck extends BasisFigur {
+
+    public Rechteck(final double LAENGE, final double HOEHE) {
+        super(LAENGE, HOEHE);
+    }
+
+    @Override
+    public double berechneFlaeche() {
+        return getLaenge()*getHoehe();
+    }
+}
+
+	\end{lstlisting}	
+	
+
+
+\end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+    
+
+	\begin{lstlisting}[caption={Abstrakte Java Klasse}\label{lst:java-abstract-class},captionpos=none,language=JAVA]] 
+public abstract class BasisFigur implements Geometrisch {
+
+    double laenge;
+    double hoehe;
+	
+    public BasisFigur(final double LAENGE, final double HOEHE) {
+        laenge = LAENGE;
+        hoehe = HOEHE;
+    }
+
+    public double getLaenge() {
+        return laenge;
+    }
+
+    public void setLaenge(final double LAENGE) {
+        laenge = LAENGE;
+    }
+
+    public double getHoehe() {
+        return hoehe;
+    }
+
+    public void setHoehe(final double HOEHE) {
+        hoehe = HOEHE;
+    }
+}
+	\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}[t]{0.45\linewidth}
+
+
+
+\end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+	 \begin{lstlisting}[caption={Abstrakte Java Klasse}\label{lst:java-abstract-class},captionpos=none,language=JAVA]]
+public class RechtwinkligesDreieck extends BasisFigur {
+
+    public RechtwinkligesDreieck(final double LAENGE, final double HOEHE) {
+        super(LAENGE, HOEHE);
+    }
+
+    @Override
+    public double berechneFlaeche() {
+        return (getLaenge()*getHoehe())/2;
+    }
+}
+	\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+
+	 \begin{lstlisting}[caption={Abstrakte Java Klasse}\laberl{lst:java-abstract-class},captionpos=none,language=JAVA]]
+public class GeometrischerRechner {
+
+    public static double berechneGesamtFlaeche(final Geometrisch[] f) {
+        double ergebnis = 0;
+        for (Geometrisch figur : f) {
+            ergebnis += figur.berechneFlaeche();
+        }
+        return ergebnis;
+    }
+}
+	\end{lstlisting}
+
+\end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+\hfill
+\begin{minipage}[t]{0.45\linewidth}
+		 \begin{lstlisting}[caption={Abstrakte Java Klasse}\label{lst:java-abstract-class},captionpos=none,language=JAVA]] 
+	 
+public class GeometrischesFigurenBeispiel {
+
+    public static void main(String[] args) {
+        // 1.1. Erstellung einzelner Objekte
+        Geometrisch rechteck = new Rechteck(10, 20);
+        Geometrisch dreieck = new RechtwinkligesDreieck(10, 20);
+		
+        // 1.2. Separate Berechnung der Flaechen 
+        System.out.println("Rechtecksflaeche: " + 
+                           rechteck.berechneFlaeche() );
+        System.out.println("Dreiecksflaeche: " + 
+                           dreieck.berechneFlaeche() );
+		
+        // 2.1. Parameter fuer die uebergabe an GeometrischerRechner
+        Geometrisch[] figuren = new Geometrisch[]{
+                                          rechteck, dreieck};
+		
+        // 2.2. Berechnung und Ausgabe der Gesamtflaeche
+        System.out.println("Gesamtflaeche: " + 
+               GeometrischerRechner.berechneGesamtFlaeche( figuren ) );
+        }
+}  
+    
+	\end{lstlisting}
+\end{minipage}
